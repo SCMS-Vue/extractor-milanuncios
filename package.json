@@ -1,0 +1,58 @@
+{
+  "name": "Business",
+  "version": "1.0.6",
+  "private": true,
+  "description": "Business extractor app.",
+  "author": "James Cuca",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SCMS-Vue/extractor-milanuncios.git"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "copy": "@powershell copy dist/index.html dist/200.html && @powershell copy ./CNAME dist/CNAME",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "icons": "vue-asset-generate -a src/assets/bootstrap-logo.svg --no-manifest && electron-icon-builder --input=./public/img/icons/android-chrome-512x512.png --output=build --flatten",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "surge": "yarn icons && yarn build && yarn copy && surge ./dist"
+  },
+  "main": "background.js",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "@supabase/supabase-js": "^1.18.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
+    "core-js": "^3.6.5",
+    "electron-dl": "^3.2.1",
+    "electron-icon-builder": "^2.0.1",
+    "electron-log": "^4.3.5",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.3.9",
+    "email-addresses": "^4.0.0",
+    "log-to-file": "^2.0.2",
+    "php-server-manager": "^1.3.3",
+    "register-service-worker": "^1.7.1",
+    "swiper": "^6.7.5",
+    "update-electron-app": "^2.0.1",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "electron": "^13.0.0",
+    "electron-devtools-installer": "^3.1.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "vue-cli-plugin-electron-builder": "~2.1.1"
+  }
+}
